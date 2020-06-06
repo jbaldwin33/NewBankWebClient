@@ -1,0 +1,65 @@
+﻿@page "/signUpPage"
+
+@using BlazorClient.ViewModels
+@inject SignUpViewModel signUpViewModel
+
+<h1>Create an account</h1>
+<EditForm Model="signUpViewModel">
+  <table>
+    <tr>
+      <td>
+        <label>First name:</label>
+      </td>
+      <td>
+        <input type="text" @bind="@signUpViewModel.FirstName" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Last name:</label>
+      </td>
+      <td>
+        <input type="text" @bind="@signUpViewModel.LastName" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Username:</label>
+      </td>
+      <td>
+        <input type="text" @bind="@signUpViewModel.Username" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Password:</label>
+      </td>
+      <td>
+        <input type="password" @bind="@signUpViewModel.Password" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label>Account type:</label>
+      </td>
+      <td>
+        <InputSelect @bind-Value="@signUpViewModel.AccountType">
+          @foreach (var t in signUpViewModel.AccountTypes)
+          {
+            <option value="@t">@t.ToString()</option>
+          }
+        </InputSelect>
+      </td>
+    </tr>
+  </table>
+  <button @onclick="@SignUpCommand">Sign up</button>
+</EditForm>
+
+@code {
+  void SignUpCommand()
+   {
+
+  }
+
+
+}

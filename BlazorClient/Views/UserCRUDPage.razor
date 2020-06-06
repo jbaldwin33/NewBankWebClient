@@ -1,0 +1,17 @@
+﻿@page "/userCRUDPage"
+
+@using BlazorClient.Data
+@inject UserCRUDService UserService
+
+<h1>Grpc connection</h1>
+
+<input type="text" @bind="@Name"/>
+<button @onclick="@GetUser"></button>
+
+@code {
+  string Name;
+  void GetUser()
+  {
+    Name = UserService.GetByFilter(new NewBankServer.Protos.UserFilter { Username = "jb123" }).FirstName;
+  }
+}
